@@ -1,5 +1,5 @@
 
-// login instractor
+// login instractor and student
 import axios from "axios"
 import {LOGIN_REQUEST,LOGIN_SUCCESS,LOGIN_FAIL, SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAIL, SIGNUPINSTRACTOR_REQUEST, SIGNUPINSTRACTOR_SUCCESS, SIGNUPINSTRACTOR_FAIL, LOUGOUT, UPDATEINSTRACTOR_REQUEST, UPDATEINSTRACTOR_SUCCESS, UPDATEINSTRACTOR_FAIL, GETINSTRACTOR_REQUEST, GETINSTRACTOR_SUCCESS, GETINSTRACTOR_FAIL, DELETEINSTRACTOR_REQUEST, DELETEINSTRACTOR_SUCCESS, DELETEINSTRACTOR_FAIL, GETALLINSTRACTOR_REQUEST, GETALLINSTRACTOR_SUCCESS, GETALLINSTRACTOR_FAIL}from "../constants/UserConstant"
 
@@ -9,13 +9,12 @@ import {LOGIN_REQUEST,LOGIN_SUCCESS,LOGIN_FAIL, SIGNUP_REQUEST, SIGNUP_SUCCESS, 
 export const login=(userCred)=>async(dispatch)=>{
       try {
           dispatch({type:LOGIN_REQUEST}) 
-           
-          const {data}=await axios.post (`http://localhost:4001/${userCred.role}/login`,userCred)
+          const {data}=await axios.post(`http://localhost:4001/${userCred.role}/login`,userCred)
           console.log(data)
           localStorage.setItem('cred',JSON.stringify(data))
           dispatch({type:LOGIN_SUCCESS,payload:data})
       } catch (error) {
-            dispatch({type:LOGIN_FAIL,})    
+            dispatch({type:LOGIN_FAIL,payload:"bad creds"})    
       }
 }
 
@@ -88,7 +87,6 @@ export const updateInstarctor = (id,newcred) => async (dispatch,getState) => {
 export const getInstarctor = (id) => async (dispatch) => {
       try {
         dispatch({ type: GETINSTRACTOR_REQUEST });
-        
         const { data } = await axios.get(`http://localhost:4001/instractorAPI/getoneofthem/${id}`);
         console.log(data)
         dispatch({ type: GETINSTRACTOR_SUCCESS, payload: data });

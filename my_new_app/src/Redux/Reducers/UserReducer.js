@@ -10,11 +10,11 @@ export const loginReducer=(state={},action)=>{
       case LOGIN_SUCCESS:
             return {laoding:false, user:action.payload}
       case LOGIN_FAIL:
-            return {loading:false,user:action.payload}
-            case LOUGOUT:
-                  return {}
-              default:
-                  return state
+            return {loading:false,error:action.payload}
+      case LOUGOUT:
+            return {}
+      default:
+            return state
             
       
       }

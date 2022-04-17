@@ -39,7 +39,7 @@ const getAllThem = async (req, res) => {
 //get oneinstractorrbyid
 const getoneofthem = async (req, res) => {
   try {
-    const getoneofthem = await instractors.findById(req.params.id).populate('listOfFeedBack');
+    const getoneofthem = await instractors.findById(req.params.id);
     return res.json({ message: "instractor found successfully", getoneofthem });
   } catch (error) {
     return res.json({ message: error });
@@ -77,12 +77,12 @@ const login = async (req, res) => {
     const instractor = await instractors.findOne({ email });
     console.log(email);
     if (!instractor) {
-      return res.json({ message: "bad credentials" });
+      return res.status(400).json({ message: "bad credentials 1 " });
     } else {
       const match = await bcrypt.compare(password, instractor.password);
       console.log(match);
       if (!match) {
-        return res.json({ message: "bad credentials" });
+        return res.status(400).json({ message: "bad credentials 2 " });
       } else {
         var token = jwt.sign({ id: instractor._id }, process.env.privateKey);
         console.log(token);
@@ -94,7 +94,7 @@ const login = async (req, res) => {
       }
     }
   } catch (error) {
-    return res.json({ message: error });
+    return res.status(400).json({ message: "bad credentials 3" });
   }
 };
 

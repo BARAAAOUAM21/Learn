@@ -58,11 +58,7 @@ const UpdateMyinfo = ({ id }) => {
                 placeholder="Edit phoneNo..."
                 onChange={(e) => setCred({ ...cred, phoneNo: e.target.value })}
               />
-              {/* <Form.Control
-                type="text"
-                placeholder="Edit E-mail..."
-                onChange={(e) => setCred({ ...cred, email: e.target.value })}
-              /> */}
+          
               <Form.Control
                 type="text"
                 placeholder="Edit language..."

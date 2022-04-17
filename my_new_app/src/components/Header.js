@@ -13,7 +13,7 @@ function Header() {
 
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" bg="light" >
+      <Navbar collapseOnSelect  >
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand href="#home">Learn.</Navbar.Brand>
@@ -35,7 +35,7 @@ function Header() {
           </>
           ) : (
             <LinkContainer to="/login"
-            style={{borderRadius:"25px",border:"#6C63FF solid"}}
+            style={{borderRadius:"25px",border:"#6C63FF ",background:"#a9def9" }}
             >
               <Nav.Link>Login</Nav.Link>
             </LinkContainer>

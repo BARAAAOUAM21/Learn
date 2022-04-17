@@ -1,5 +1,5 @@
 var jwt = require('jsonwebtoken');
-const students=require('../models/studentSchema')
+const student=require('../models/studentSchema')
 
 const studentMiddleware=async(req,res,next)=>{
 try {
@@ -8,7 +8,7 @@ try {
             return res.json({message:'not authorized'})
       } else {
             var decoded =jwt.verify(token, process.env.privateKey)
-            const student=await students.findById(decoded.id)
+            const student=await student.findById(decoded.id)
             if (!student){
             return res.json({message:'not authorized'})
             }

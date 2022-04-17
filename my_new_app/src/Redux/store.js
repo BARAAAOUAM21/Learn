@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import {  deleteInstractorReducer, getAllInstractorReducer, getInstractorReducer, loginReducer, signupinstractorReducer, signupReducer, updateInstractorReducer } from "./Reducers/UserReducer";
 import { deleteStudentReducer, getStudentReducer, updateStudentReducer } from "./Reducers/StudentReducer";
-import { addfeedbackReducer } from "./Reducers/FeddBackReducer";
+// import { addfeedbackReducer } from "./Reducers/FeddBackReducer";
 
 
 const reducer=combineReducers({
@@ -17,7 +17,7 @@ const reducer=combineReducers({
       deleteInstractor:deleteInstractorReducer,
       deleteStudent:deleteStudentReducer,
       getAllInstractor:getAllInstractorReducer,
-      addfeedback:addfeedbackReducer
+      // addfeedback:addfeedbackReducer 
       
 
 })

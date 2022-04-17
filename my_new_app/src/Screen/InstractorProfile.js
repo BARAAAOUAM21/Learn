@@ -4,19 +4,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { getInstarctor } from "../Redux/Actions/UserActions";
 import UpdateMyinfo from "../components/UpdateMyInfo";
-import { Alert, Button, Nav } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
-import { deleteInstarctor } from "../Redux/Actions/UserActions";
+// import {  Button, Nav } from "react-bootstrap";
+// import { LinkContainer } from "react-router-bootstrap";
+// import { deleteInstarctor } from "../Redux/Actions/UserActions";
 
 const InstractorProfile = () => {
   const dispatch = useDispatch();
   const { loading, user } = useSelector((state) => state.getInstractor);
+  const longinDetails = useSelector((state) => state.loginDetails);
   const [show, setShow] = useState(true);
-
+  console.log(user)
   const { id } = useParams();
   useEffect(() => {
     dispatch(getInstarctor(id));
-  }, [dispatch]);
+  }, [dispatch,id]);
   return (
     <div>
       {loading && "loading"}
@@ -64,7 +65,7 @@ const InstractorProfile = () => {
                     <div className="media">
                       <label>Gender</label>
                       {<p> {user && user.getoneofthem.gender} </p>}
-                      <UpdateMyinfo id={id} />
+                      {longinDetails && longinDetails.user.instractor && <UpdateMyinfo id={id} />}
                     </div>
                   </div>
                 </div>

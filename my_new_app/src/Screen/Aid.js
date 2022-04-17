@@ -20,7 +20,7 @@ const Aid=()=> {
 
 
 
-<div data-aos="zoom-out-up" className="jomla">you will love our simplicity</div>
+<div data-aos="zoom-out-up" className="jomla">you will love our simplicity !</div>
 
 <div data-aos="fade-right">
       <div  className="find">1 - Find your perfect teacher</div>

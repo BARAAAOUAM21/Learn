@@ -21,10 +21,9 @@ const Login = () => {
    
   }, [user])
   return (
-    
+    <>
+    <Header/> 
     <div className="container-fluid ps-md-0">
-            <Header/>
-
       <div className="row g-0">
         <div className="d-none d-md-flex col-md-4 col-lg-6 bg-image" />
         <div className="col-md-8 col-lg-6">
@@ -98,6 +97,13 @@ const Login = () => {
                         Sign in
                       </button>
                     </div>
+                    <p className="text-muted font-weight-bold">
+                    Don't have an account? Sign Up?{" "}
+                    <a href="/signup"
+                     style={{color:"#6C63FF"}} >
+                      Sign up
+                    </a>
+                  </p>
                   </form>
                 </div>
               </div>
@@ -106,6 +112,7 @@ const Login = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

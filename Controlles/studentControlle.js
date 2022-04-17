@@ -2,18 +2,20 @@ const students=require("../models/studentSchema")
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 var jwt = require('jsonwebtoken');
-const instractor=require('../models/instractorSchema')
+const student=require('../models/studentSchema')
+const secret = 'test';
+
 
 
 
 //add student
 const addNewStudent=async(req,res)=>{
+      const {email,password,confirmPassword}=req.body
       try {
-            const {email,password,confirmPassword}=req.body
             const student=await students.findOne({email})
-            if (student){
+            if (student)
             return res.status(400).json({message:'student already exists'})
-            } else {
+            // else {
 
             const hashed=await bcrypt.hash(password,saltRounds)
             const hashedconfirm= await bcrypt.hash(confirmPassword,saltRounds)
@@ -21,15 +23,17 @@ const addNewStudent=async(req,res)=>{
 if(password===confirmPassword){
       await newStudent.save() 
 return res.status(200).json({message:'student added successfully',newStudent})
-}
+// }
 return res.status(400).json({message:'check your password',newStudent})
 
             console.log('new',newStudent)
 
-           
+            const token = jwt.sign( { email: result.email, id: result._id }, secret, { expiresIn: "1h" } );
+
+            res.status(201).json({ result, token });
             }
       } catch (error) {
-            return res.status(400).json({message:"is not true"})
+            return res.status(500).json({message:"is not true"})
       }
 }
 
@@ -81,14 +85,14 @@ const login=async(req,res)=>{
       const {email,password}=req.body
       const student= await students.findOne({email})
       console.log(email)
-      if (!student){
-            return res.json({message:'bad credentials'})
-      }else {
+      if (!student)
+            return res.status(404).json({message:'bad credentials'})
+      else {
             const match=await bcrypt.compare(password, student.password)
             console.log(match)
-            if (!match){
+            if (!match)
                   return res.json({message:'bad credentials'}) 
-            } else {
+            else {
                   var token =  jwt.sign({ id: student._id }, process.env.privateKey);
                   console.log(token)
                   return res.json({message:'student loggedIn successfully',student:student,token})

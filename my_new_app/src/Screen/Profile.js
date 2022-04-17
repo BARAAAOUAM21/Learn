@@ -19,9 +19,9 @@ const Profile = () => {
     return (
         <div>
             <InstractorProfile/>
-        
- <Button  style={{backgroundColor:"#fc5356",borderRadius:"25px",border:"none",float:"right",top:"700px",position: "absolute",left:"1320px"}} onClick={() => setShow(false)}>Delete Account</Button>
-
+   {     
+ user && user.instractor && <Button  style={{backgroundColor:"#fc5356",borderRadius:"25px",border:"none",float:"right",top:"700px",position: "absolute",left:"1320px"}} onClick={() => setShow(false)}>Delete Account</Button>
+}
 <Alert show={!show} variant="success">
   <Alert.Heading>Are you sure?!</Alert.Heading>
   <p>we are sad because you left we</p>

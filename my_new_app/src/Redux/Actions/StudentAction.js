@@ -17,6 +17,7 @@ export const updateStudent = (id,newcred) => async (dispatch,getState) => {
         dispatch({ type: UPDATESTUDENT_FAIL });
       }
     };
+    
 
 
     //     Get student 

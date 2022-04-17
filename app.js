@@ -8,7 +8,6 @@ const cors =require('cors')
 app.use(cors())
 app.use('/instractorAPI',require('./Routes/instractorRoutes'))
 app.use('/studentAPI',require('./Routes/studentRoutes'))
-app.use('/feedBackAPI',require('./Routes/feedBackRouter'))
 
 connectDB()
 const PORT=(process.env.port)  || 4001
